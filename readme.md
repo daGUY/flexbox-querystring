@@ -5,6 +5,8 @@
 ## Description
 Change the display order of content on an HTML page just by adding querystring parameters to its URL. Content is rearranged entirely on the front-end with CSS flexbox, letting you create variations on-the-fly without any server-side component or deployment process.
 
+**[View Demo](http://scariati.kissr.com/github/flexstring/)**
+
 ## Dependencies
 * [jQuery](http://jquery.org/)
 * [Flexibility](https://github.com/10up/flexibility) (for IE9 support)
@@ -54,17 +56,23 @@ index.html?order=5,1,4,2,3
 
 Shows the fifth `<section>` first, followed by the first `<section>`, then the fourth `<section>`, etc.
 
+**[View Demo](http://scariati.kissr.com/github/flexstring/?order=5,1,4,2,3)**
+
 ```html
 index.html?order=reverse&hide=1,5
 ```
 
 Reverses the order of the `<section>`s and hides the first and fifth.
 
+**[View Demo](http://scariati.kissr.com/github/flexstring/?order=reverse&hide=1,5)**
+
 ```html
 index.html?order=random&hide=4&remove=2
 ```
 
 Hides the fourth `<section>`, removes the second `<section>`, and randomizes the order of the remaining `<section>`s.
+
+**[View Demo](http://scariati.kissr.com/github/flexstring/?order=random&hide=4&remove=2)**
 
 ## Notes
 Because CSS flexbox is used to reorder the page content, the DOM retains the original order. Therefore, jQuery methods 
