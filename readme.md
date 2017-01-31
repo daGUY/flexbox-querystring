@@ -1,54 +1,71 @@
-# Flexbox Querystring Demo
+# FlexString
 * By James Scariati
 * February 2016
 
 ## Description
-Switch the display order of items on a page simply by appending a querystring to its URL. The reordering is done with Flexbox, so the underlying HTML structure remains exactly the same.
+Change the display order of content on an HTML page just by adding querystring parameters to its URL. Content is rearranged entirely on the front-end with CSS flexbox, letting you create variations on-the-fly without any server-side component or deployment process.
 
 ## Dependencies
-* [jQuery](http://jquery.org/) and jQuery Querystring
+* [jQuery](http://jquery.org/)
 * [Flexibility](https://github.com/10up/flexibility) (for IE9 support)
 
 ## Use
-Include the above libraries and `querystring.js` in your HTML:
+Include jQuery, Flexibility, `flexstring.css`, and the `jquery.flexstring.js` plugin in your HTML, and set up a basic page layout where your content is wrapped with a parent container:
 
 ```html
-<script src="lib/jquery.min.js"></script>
-<script src="lib/jquery.querystring.js"></script>
-<script src="lib/flexibility.js"></script>
-<script src="js/querystring.js"></script>
+<head>
+	<link rel="stylesheet" href="css/flexstring.css" />
+</head>
+<body>
+	<div id="container">
+		<section></section>
+		<section></section>
+		<section></section>
+		<section></section>
+		<section></section>
+	</div>
+	
+	<script src="lib/jquery.min.js"></script>
+	<script src="lib/flexibility.js"></script>
+	<script src="lib/jquery.flexstring.js"></script>
+</body>
 ```
 
-Structure your content like so:
+Then call `flexString()` on the container:
+
+```javascript
+$(document).ready(function() {
+	$("#container").flexString();
+});
+```
+
+## Querystring Parameters
+You can append the following querystring parameters to adjust the display order of page content:
+
+* `order`: a comma-delimited numerical list that specifies the display order of the container's children. Also accepts `reverse` to reverse the natural display order or `random` to randomize it
+* `hide`: a comma-delimited numerical list of child elements to hide. The hidden elements remain in the DOM, so you can toggle their visibility after the initial page load if necessary
+* `remove`: equivalent to `hide`, except the child elements are removed from the DOM entirely
+
+### Examples
 
 ```html
-<div class="container">
-	<div class="item one">1</div>
-	<div class="item two">2</div>
-	<div class="item three">3</div>
-	<div class="item four">4</div>
-	<div class="item five">5</div>
-</div>
+index.html?order=5,1,4,2,3
 ```
 
-Now, if you append `?version=alt` to the URL, `querystring.js` will use that value as an additional class on `.container`...
+Shows the fifth `<section>` first, followed by the first `<section>`, then the fourth `<section>`, etc.
 
 ```html
-<div class="container alt">
-	<div class="item one">1</div>
-	<div class="item two">2</div>
-	<div class="item three">3</div>
-	<div class="item four">4</div>
-	<div class="item five">5</div>
-</div>
+index.html?order=reverse&hide=1,5
 ```
 
-...which in turn will apply the alternate display order specified in the CSS:
+Reverses the order of the `<section>`s and hides the first and fifth.
 
-```css
-.alt .one   { -ms-flex-order: 5; order: 5; }
-.alt .two   { -ms-flex-order: 2; order: 2; }
-.alt .three { -ms-flex-order: 1; order: 1; }
-.alt .four  { -ms-flex-order: 3; order: 3; }
-.alt .five  { -ms-flex-order: 4; order: 4; }
+```html
+index.html?order=random&hide=4&remove=2
 ```
+
+Hides the fourth `<section>`, removes the second `<section>`, and randomizes the order of the remaining `<section>`s.
+
+## Notes
+Because CSS flexbox is used to reorder the page content, the DOM retains the original order. Therefore, jQuery methods 
+like `.prev()` and `.next()` will follow the DOM order, not the display order.
