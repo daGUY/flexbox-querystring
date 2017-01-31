@@ -50,27 +50,33 @@ You can append the following querystring parameters to adjust the display order 
 
 ### Examples
 
+#### Order
+
+Show the fifth `<section>` first, followed by the first `<section>`, then the fourth `<section>`, etc.
+
 ```html
 index.html?order=5,1,4,2,3
 ```
 
-Shows the fifth `<section>` first, followed by the first `<section>`, then the fourth `<section>`, etc.
-
 **[View Demo](http://scariati.kissr.com/github/flexstring/?order=5,1,4,2,3)**
+
+#### Reverse order, hide
+
+Reverse the order of the `<section>`s and hide the first and fifth.
 
 ```html
 index.html?order=reverse&hide=1,5
 ```
 
-Reverses the order of the `<section>`s and hides the first and fifth.
-
 **[View Demo](http://scariati.kissr.com/github/flexstring/?order=reverse&hide=1,5)**
+
+#### Random order, hide, and remove
+
+Hide the fourth `<section>`, remove the second `<section>`, and randomize the order of the remaining `<section>`s.
 
 ```html
 index.html?order=random&hide=4&remove=2
 ```
-
-Hides the fourth `<section>`, removes the second `<section>`, and randomizes the order of the remaining `<section>`s.
 
 **[View Demo](http://scariati.kissr.com/github/flexstring/?order=random&hide=4&remove=2)**
 
