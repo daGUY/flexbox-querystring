@@ -12,7 +12,7 @@ Change the display order of content on an HTML page just by adding querystring p
 * [Flexibility](https://github.com/10up/flexibility) (for IE9 support)
 
 ## Use
-Include jQuery, Flexibility, `flexstring.css`, and the `jquery.flexstring.js` plugin in your HTML, and set up a basic page layout where your content is wrapped with a parent container:
+Include jQuery, Flexibility, `flexstring.css`, and the `jquery.flexstring.min.js` plugin in your HTML, and set up a basic page layout where your content is wrapped with a parent container:
 
 ```html
 <head>
@@ -29,7 +29,7 @@ Include jQuery, Flexibility, `flexstring.css`, and the `jquery.flexstring.js` pl
 	
 	<script src="lib/jquery.min.js"></script>
 	<script src="lib/flexibility.js"></script>
-	<script src="lib/jquery.flexstring.js"></script>
+	<script src="lib/jquery.flexstring.min.js"></script>
 </body>
 ```
 
